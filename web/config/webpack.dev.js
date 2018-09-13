@@ -2,11 +2,11 @@ const merge = require("webpack-merge");
 const path = require('path');
 const apiMocker = require('webpack-api-mocker');
 const fs = require('fs');
-const abs_path = require('./path');
-
+const resolve_path = require('./path');
+// console.log(resolve_path("../main.js"))
 const config = {
     entry: {
-        main: resolve_path("page/main.js"),
+        main: resolve_path("../main.js"),
     },
     mode: 'development',
     output: {
@@ -15,7 +15,7 @@ const config = {
         chunkFilename: '[name].bundle.js'
     },
     devServer: {
-        // contentBase: [resolve_path( "page")],
+        contentBase: [resolve_path( "../")],
         // hot: true,
         progress: true,
         port: 8100,
@@ -24,7 +24,7 @@ const config = {
         disableHostCheck: true,
         before(app){
             // mock数据  todo转发到线上
-            apiMocker(app, path.resolve(__dirname,'../mock/index.js'))
+            // apiMocker(app, path.resolve(__dirname,'../mock/index.js'))
          },
          proxy: {
             "*": {

@@ -1,13 +1,9 @@
-const path = require('path')
-let present_path = process.cwd();
-function abs_path(rel_path){
-    return path.resolve(present_path,rel_path)
-}
+let resolve_path = require('./path');
 
 module.exports={
-    entry: abs_path('../web/main.js'),
+    entry: resolve_path('../web/main.js'),
     output: {
-        path: abs_path('../dist'),
+        path: resolve_path('../dist'),
         filename: 'main.js',
         publicPath: "/static",
         chunkname: "[name].js"
@@ -16,7 +12,7 @@ module.exports={
         rules: [
             {
                 test: /\.js(x)?$/,
-                include: [abs_path('../src')],
+                include: [resolve_path('../src')],
                 use: [
                     {
                         loader: "babel-loader",
