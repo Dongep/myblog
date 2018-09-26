@@ -3,6 +3,7 @@ const path = require('path');
 const apiMocker = require('webpack-api-mocker');
 const fs = require('fs');
 const resolve_path = require('./path');
+const base_config = require('./webpack.base');
 // console.log(resolve_path("../main.js"))
 const config = {
     entry: {
@@ -43,4 +44,4 @@ const config = {
           }
     },
 }
-module.exports=config;
+module.exports=merge(base_config,config);

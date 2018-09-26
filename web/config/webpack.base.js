@@ -1,12 +1,13 @@
 let resolve_path = require('./path');
 
 module.exports={
-    entry: resolve_path('../web/main.js'),
+    entry: {
+        main: resolve_path("../main.js"),
+    },
     output: {
-        path: resolve_path('../dist'),
-        filename: 'main.js',
-        publicPath: "/static",
-        chunkname: "[name].js"
+        // path: '/dist',
+        filename: '[name].js',
+        chunkFilename: '[name].bundle.js'
     },
     module: {
         rules: [
@@ -16,12 +17,13 @@ module.exports={
                 use: [
                     {
                         loader: "babel-loader",
+                      
                     },
-                    {
-                        loader: "eslint-loader",
-                        options: {
-                          },
-                    }
+                    // {
+                    //     loader: "eslint-loader",
+                    //     options: {
+                    //       },
+                    // }
                 ]
                 
             },{

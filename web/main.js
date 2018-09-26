@@ -1,3 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-console.log(1)
+import Index from './src/index'
+let root = document.querySelector('#blog');
+
+ReactDOM.render(Index,root)
