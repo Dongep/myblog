@@ -6,9 +6,6 @@ const resolve_path = require('./path');
 const base_config = require('./webpack.base');
 // console.log(resolve_path("../main.js"))
 const config = {
-    entry: {
-        main: resolve_path("../main.js"),
-    },
     mode: 'development',
     output: {
         // path: '/dist',
@@ -16,7 +13,7 @@ const config = {
         chunkFilename: '[name].bundle.js'
     },
     devServer: {
-        contentBase: [resolve_path( "../")],
+        contentBase: [resolve_path( "../src/")],
         // hot: true,
         progress: true,
         port: 8100,

@@ -2,7 +2,7 @@ let resolve_path = require('./path');
 
 module.exports={
     entry: {
-        main: resolve_path("../main.js"),
+        main: resolve_path("../src/main.js"),
     },
     output: {
         // path: '/dist',
