@@ -10,7 +10,7 @@ export default class Login extends React.Component{
                 name: '',
                 id: ''
             },
-            input: {
+            form: {
                 name: '',
                 password: ''
             }
@@ -21,8 +21,9 @@ export default class Login extends React.Component{
         return (
             <div>
                 <h3>奥利爸爸/妈妈请登录</h3>
-                <input type="text" />
-                <input type="password"/>
+                <input type="text" onChange={(e)=>this.set_value('name',e.target.value)}/>
+                <input type="password" onChange={(e)=>this.set_value('password',e.target.value)}/>
+                <button onClick={(e)=>this.login(e)}>登录</button>
             </div>
         )
     }
@@ -32,8 +33,16 @@ export default class Login extends React.Component{
     get_data(){
 
     }
+    set_value(key,value){
+        let form = this.state.form;
+        form[key]=value;
+        this.setState({
+            form: form
+        })
+    }
     login(){
         let data = this.get_data();
+        console.log(this.state.form)
         axios.post('/login',{
 
         })
