@@ -1,4 +1,4 @@
-let router = require('koa-router');
+let router = require('koa-router')();
 let user = require('./controller/user');
-router.get('/login',user.login);
+router.post('/login',user.login);
 module.exports = router;

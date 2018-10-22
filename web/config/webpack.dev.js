@@ -20,22 +20,23 @@ const config = {
         historyApiFallback: true,
         host: "0.0.0.0",
         disableHostCheck: true,
-        before(app){
-            // mock数据  todo转发到线上
-            // apiMocker(app, path.resolve(__dirname,'../mock/index.js'))
-         },
+        // before(app){
+        //     // mock数据  todo转发到线上
+        //     // apiMocker(app, path.resolve(__dirname,'../mock/index.js'))
+        //  },
          proxy: {
             "*": {
-                // target: "http://localhost:8000",
+                target: "http://localhost:8110",
                 bypass: function(req, res, proxyOptions) {
-                    // console.log(req.path)
-                    // if (req.headers.accept.indexOf("html") !== -1) {
-                    //     // 请求头accept html，不代理请求,返回index.html
-                    //     return "index.html";
-                    // }  else {
-                    //     return req.path
+                    console.log(req.headers.accept)
+                    if (req.headers.accept.indexOf("html") !== -1) {
+                        // 请求头accept html，不代理请求,返回index.html
+                        return "index.html";
+                    }  else if(req.headers.accept.indexOf("application/json") !== -1) {
+                        return req.path
                         
-                    // } 
+                    } 
+                    return false
                 }
               }
           }
