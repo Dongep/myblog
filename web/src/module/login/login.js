@@ -43,8 +43,8 @@ export default class Login extends React.Component{
     login(){
         let data = this.get_data();
         console.log(this.state.form)
-        axios.post('/login',{
-
+        axios.post('/login',this.state.form).then(function(res){
+            console.log(res)
         })
     }
 }

@@ -26,17 +26,16 @@ const config = {
         //  },
          proxy: {
             "*": {
-                target: "http://localhost:8110",
+                target: "http://127.0.0.1:8110",
                 bypass: function(req, res, proxyOptions) {
-                    console.log(req.headers.accept)
+                    // 拦截不需要转发的请求
                     if (req.headers.accept.indexOf("html") !== -1) {
                         // 请求头accept html，不代理请求,返回index.html
                         return "index.html";
-                    }  else if(req.headers.accept.indexOf("application/json") !== -1) {
+                    }  else if(req.headers.accept.indexOf("application/json") == -1) {
                         return req.path
                         
                     } 
-                    return false
                 }
               }
           }
