@@ -7,7 +7,10 @@ user.login = async (ctx, next) => {
     if(name=='dong'&&password=='123456'){
         ctx.response.body={
             code: 0,
-            data: 'success!'
+            data: {
+                name: 'dong',
+                id: '1'
+            }
         }
     } else {
         ctx.response.body={
